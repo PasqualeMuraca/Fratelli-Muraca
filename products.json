@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Lattina da 3L",
+        "price": 29.3,
+        "shipping": 9.5
+    },
+    
+    {
+        "name": "Lattina da 5L",
+        "price": 47.5,
+        "shipping": 12.5
+    },
+    
+    {
+        "name": "Lattina da 10L",
+        "price": 94.5,
+        "shipping": 15.0
+    }
+
+]
