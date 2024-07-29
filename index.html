@@ -6,6 +6,7 @@
 
 <body>
     <h1>Hello World</h1>
+
     <ul id="products_ul">
     </ul>
     
@@ -15,7 +16,24 @@
         <ul id="cart_ul">
         </ul>
     </div>
+    
+    <form id="order_form" onchange="updateCart()">
+        <input type="text" id="name" name="name" placeholder="Name" required>
+        <input type="text" id="surname" name="surname" placeholder="Surname" required>
+        <input type="email" id="email" name="email" placeholder="Email" required>
+        <input type="text" id="address" name="address" placeholder="Address" required>
+        <input type="text" id="city" name="city" placeholder="City" required>
+        <input type="text" id="cap" name="cap" placeholder="CAP" required>
+        <input type="text" id="phone" name="phone" placeholder="Phone" required>
+    </form>
 
+    <div id="order" hidden>
+        <h4 id="total_price">Prezzo carrello: 0.00€</h4>
+        <h4 id="total_shipping">Costo spedizione: 0.00€</h4>
+        <h2 id="total_cost">Totale: 0.00€</h2>
+
+        <a id="order_whatsapp" href="wa.me/393382739450?text=">Ordina subito</a>
+    </div>
 
     
     <script src="script.js"></script>

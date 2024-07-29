@@ -18,6 +18,37 @@ async function loadProducts() {
     }
 }
 
+function formatOrder() {
+    let form = document.getElementById('order_form');
+    let name = form.name.value;
+    let surname = form.surname.value;
+    let address = form.address.value;
+    let city = form.city.value;
+    let cap = form.cap.value;
+    let phone = form.phone.value;
+    let email = form.email.value;
+
+    let totale = 0;
+    let text = '';
+    text += "👋 Ciao, ecco il mio ordine\n";
+    text += "👤 Destinatario: *" + name + " " + surname + "*\n";
+    text += "📞 Telefono: " + phone + "\n";
+    text += "📧 Email: " + email + "\n";
+    text += "📍 Indirizzo " + address + ", " + city + " " + cap + "\n\n";
+    text += "📦 Prodotti:\n";
+    cart.forEach((quantity, productId) => {
+        const product = products.find(p => p.id === productId);
+        if (!product) return;
+        let prezzo = (product.price + product.shipping) * quantity;
+        totale += prezzo;
+        text += `${product.name} x${quantity}, prezzo: ${prezzo}€\n`;
+    });
+
+    text += "\n🔥 *Totale: " + totale + "€*\n";
+    text += "\n\nFratelli Muraca cercherà di rispondere il prima possibile con le modalità di pagamento\nGrazie per la pazienza";
+    return text;
+}
+
 // Function to add a product to the cart by product ID
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
@@ -45,6 +76,15 @@ function clearCart() {
 
 // Function to update the cart in the HTML
 function updateCart() {
+    let order_div = document.getElementById('order');
+    if (cart.size === 0) {
+        let cart_list = document.getElementById('cart_ul');
+        cart_list.innerHTML = '<li>Il carrello è vuoto</li>';
+        order_div.hidden = true;
+        return;
+    }
+
+    order_div.hidden = false;
     let cart_list = document.getElementById('cart_ul');
     cart_list.innerHTML = '';
     cart.forEach((quantity, productId) => {
@@ -61,6 +101,36 @@ function updateCart() {
         `;
         cart_list.appendChild(li);
     });
+    
+    updateTotal();
+    updateOrderLinks();
+}
+
+// Function to update the total price in the HTML
+function updateTotal() {
+    let total = 0;
+    let shipping = 0;
+    cart.forEach((quantity, productId) => {
+        const product = products.find(p => p.id === productId);
+        if (!product) return;
+
+        total += product.price * quantity;
+        shipping += product.shipping * quantity;
+    });
+
+    let total_price = document.getElementById('total_price');
+    total_price.innerHTML = `Prezzo carello: ${total}€`;
+    let total_shipping = document.getElementById('total_shipping');
+    total_shipping.innerHTML = `Costo spedizione: ${shipping}€`;
+    let total_cost = document.getElementById('total_cost');
+    total_cost.innerHTML = `Totale: ${total + shipping}€`;
+}
+
+function updateOrderLinks() {
+    let order_whatsapp = document.getElementById('order_whatsapp');
+    let text = formatOrder();
+    console.log(text);
+    order_whatsapp.href = `https://wa.me/393382739450?text=${encodeURIComponent(text)}`;
 }
 
 // Main
