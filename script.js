@@ -73,6 +73,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         let li = document.createElement('li');
         li.innerHTML = `
             <h2>${product.name}</h2>
+            <img src="media/${product.img_path}" alt="${product.name}">
             <p>Prezzo: ${product.price}€</p>
             <p>Costo spedizione: ${product.shipping}€</p>
             <button onclick="addToCart(${product.id})">Aggiungi al carrello</button>
