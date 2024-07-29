@@ -1,4 +1,5 @@
-// hashmap of products in the cart with the quantity
+
+// Hashmap of products in the cart with the quantity
 let cart = new Map();
 let products = []; // Global variable to store loaded products
 
@@ -54,6 +55,9 @@ function updateCart() {
         li.innerHTML = `
             <h2>${product.name}</h2>
             <p>Quantità: ${quantity}</p>
+            <p>Prezzo: ${product.price}€</p>
+            <p>Costo spedizione: ${product.shipping}€</p>
+            <button onclick="deleteFromCart(${product.id})">Rimuovi dal carrello</button>
         `;
         cart_list.appendChild(li);
     });
