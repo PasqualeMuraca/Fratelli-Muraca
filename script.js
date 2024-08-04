@@ -45,7 +45,7 @@ function formatOrder() {
     });
 
     text += "\n🔥 *Totale: " + totale + "€*\n";
-    text += "\n\nFratelli Muraca cercherà di rispondere il prima possibile con le modalità di pagamento\nGrazie per la pazienza";
+    text += "\n\nFratelli Muraca cercherà di rispondere il prima possibile con le modalità di pagamento.\nGrazie per la pazienza! ❤️";
     return text;
 }
 
@@ -86,6 +86,7 @@ function updateCart() {
 
     order_div.hidden = false;
     let cart_list = document.getElementById('cart_ul');
+    cart_list.scrollIntoView();
     cart_list.innerHTML = '';
     cart.forEach((quantity, productId) => {
         const product = products.find(p => p.id === productId);
@@ -95,13 +96,13 @@ function updateCart() {
         li.innerHTML = `
             <h2>${product.name}</h2>
             <p>Quantità: ${quantity}</p>
-            <p>Prezzo: ${product.price}€</p>
-            <p>Costo spedizione: ${product.shipping}€</p>
-            <button onclick="deleteFromCart(${product.id})">Rimuovi dal carrello</button>
+            <p>Prezzo: ${product.price * quantity}€</p>
+            <p>Costo spedizione: ${product.shipping * quantity}€</p>
+            <button type="button" class="btn btn-danger" onclick="deleteFromCart(${product.id})">Rimuovi dal carrello</button>
         `;
         cart_list.appendChild(li);
     });
-    
+
     updateTotal();
     updateOrderLinks();
 }
@@ -134,20 +135,26 @@ function updateOrderLinks() {
 }
 
 // Main
-document.addEventListener('DOMContentLoaded', async function() {
+document.addEventListener('DOMContentLoaded', async function () {
     products = await loadProducts();
-    
+
     // For each product, append the information with li in a ul with id products_ul
-    let products_list = document.getElementById('products_ul');
+    let shopDiv = document.getElementById('shop-div');
     products.forEach(product => {
-        let li = document.createElement('li');
-        li.innerHTML = `
-            <h2>${product.name}</h2>
-            <img src="media/${product.img_path}" alt="${product.name}">
-            <p>Prezzo: ${product.price}€</p>
-            <p>Costo spedizione: ${product.shipping}€</p>
-            <button onclick="addToCart(${product.id})">Aggiungi al carrello</button>
+        let div = document.createElement('div');
+        div.classList.add('col-md-4');
+        div.innerHTML = `
+            <div class="card">
+                <img height="500" src="media/${product.img_path}" class="card-img-top" alt="${product.name}">
+                <div class="card-body">
+                    <h5 class="card-title">${product.name}</h5>
+                    <p class="card-text">Prezzo: ${product.price}€</p>
+                    <p class="card-text">Costo spedizione: ${product.shipping}€</p>
+                    <button type="button" class="btn btn-primary" onclick="addToCart(${product.id})">Aggiungi al carrello</button>
+                </div>
+            </div>
         `;
-        products_list.appendChild(li);
+
+        shopDiv.appendChild(div);
     });
 });
