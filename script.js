@@ -131,7 +131,7 @@ function updateOrderLinks() {
     let order_whatsapp = document.getElementById('order_whatsapp');
     let text = formatOrder();
     console.log(text);
-    order_whatsapp.href = `https://wa.me/393382739450?text=${encodeURIComponent(text)}`;
+    order_whatsapp.href = `https://wa.me/393384578681?text=${encodeURIComponent(text)}`;
 }
 
 // Main
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         div.classList.add('col-md-4');
         div.innerHTML = `
             <div class="card">
-                <img height="500" src="./media/${product.img_path}" class="card-img-top" alt="${product.name}">
+                <img height="500" src="./products/${product.img_path}" class="card-img-top" alt="${product.name}">
                 <div class="card-body">
                     <h5 class="card-title">${product.name}</h5>
                     <p class="card-text">Prezzo: ${product.price}€</p>
