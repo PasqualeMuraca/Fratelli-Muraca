@@ -27,6 +27,7 @@ function formatOrder() {
     let cap = form.cap.value;
     let phone = form.phone.value;
     let email = form.email.value;
+    let prov = form.prov.value;
 
     let totale = 0;
     let text = '';
@@ -34,7 +35,7 @@ function formatOrder() {
     text += "👤 Destinatario: *" + name + " " + surname + "*\n";
     text += "📞 Telefono: " + phone + "\n";
     text += "📧 Email: " + email + "\n";
-    text += "📍 Indirizzo " + address + ", " + city + " " + cap + "\n\n";
+    text += "📍 Indirizzo " + address + ", " + city + " (" + prov + ") " + cap + "\n\n";
     text += "📦 Prodotti:\n";
     cart.forEach((quantity, productId) => {
         const product = products.find(p => p.id === productId);
