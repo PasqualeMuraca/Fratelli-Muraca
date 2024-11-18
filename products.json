@@ -12,7 +12,7 @@
         "name": "Lattina da 5L",
         "price": 47.5,
         "shipping": 12.5,
-        "img_path": "latt5l.jpg"
+        "img_path": "5l.jpg"
     },
     
     {
@@ -20,7 +20,7 @@
         "name": "Lattina da 10L",
         "price": 94.5,
         "shipping": 15.0,
-        "img_path": "latt10l.jpg"
+        "img_path": "10l.jpg"
     }
 
 ]

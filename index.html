@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Fratelli Muraca</title>
     <og:description content="Store di Olio Extravergine di Oliva">
-    <og:image content="https://raw.githubusercontent.com/Pasqualecoder/Fratelli-Muraca/main/miscellaneous/fb_thumbnail.png">
+    <og:image content="https://raw.githubusercontent.com/PasqualeMuraca/Fratelli-Muraca/main/miscellaneous/fb_thumbnail.png">
     <og:type content="website">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -84,16 +84,42 @@
         <br>
 
         <form id="order_form" onchange="updateCart()">
-            <p>Inserisci i tuoi dati per l'ordine</p>
-            <input type="text" id="name" name="name" placeholder="Nome" required>
-            <input type="text" id="surname" name="surname" placeholder="Cognome" required>
-            <input type="email" id="email" name="email" placeholder="Email" required>
-            <input type="text" id="address" name="address" placeholder="Indirizzo e n. civico" required>
-            <input type="text" id="city" name="city" placeholder="Città" required>
-            <input type="text" id="prov" name="prov" placeholder="Prov." required>
-            <input type="text" id="cap" name="cap" placeholder="CAP" required>
-            <input type="text" id="phone" name="phone" placeholder="Telefono" required>
+            <fieldset>
+                <legend>Inserisci i tuoi dati per l'ordine</legend>
+                
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" placeholder="Inserisci il tuo nome" required>
+                <br>
+        
+                <label for="surname">Cognome:</label>
+                <input type="text" id="surname" name="surname" placeholder="Inserisci il tuo cognome" required>
+                <br>
+        
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Inserisci la tua email" required>
+                <br>
+        
+                <label for="address">Indirizzo:</label>
+                <input type="text" id="address" name="address" placeholder="Via e numero civico" required>
+                <br>
+        
+                <label for="city">Città:</label>
+                <input type="text" id="city" name="city" placeholder="Inserisci la tua città" required>
+                <br>
+        
+                <label for="prov">Provincia:</label>
+                <input type="text" id="prov" name="prov" placeholder="Sigla provincia" required>
+                <br>
+        
+                <label for="cap">CAP:</label>
+                <input type="text" id="cap" name="cap" placeholder="Inserisci il CAP" required>
+                <br>
+        
+                <label for="phone">Telefono:</label>
+                <input type="text" id="phone" name="phone" placeholder="Inserisci il tuo numero di telefono" required>
+            </fieldset>
         </form>
+        
 
         <a name="order_whatsapp" id="order_whatsapp" class="btn btn-success" href="wa.me/393384578681?text="
             role="button">Ordina Subito con Whatsapp <i class="bi bi-whatsapp"></i></a>
@@ -171,7 +197,7 @@
                     <a href="https://wa.me/393384578681" class="text-white"><i class="bi bi-whatsapp"></i></a>
                 </div>
                 <div class="col-md-auto">
-                    <p>Developed with <i class="bi bi-heart-fill"></i> by <a href="https://github.com/Pasqualecoder/" class="text-white fw-bold">Pasquale Muraca</a></p>
+                    <p>Developed with <i class="bi bi-heart-fill"></i> by <a href="https://github.com/PasqualeMuraca/" class="text-white fw-bold">Pasquale Muraca</a></p>
                     <p>Special Thanks to
                         <ul>
                             <li>Giuseppe Pastena</li>

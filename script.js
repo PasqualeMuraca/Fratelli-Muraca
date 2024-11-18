@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         div.classList.add('col-md-4');
         div.innerHTML = `
             <div class="card">
-                <img height="500" src="./products/${product.img_path}" class="card-img-top" alt="${product.name}">
+                <img height=auto src="./products/${product.img_path}" class="card-img-top" alt="${product.name}">
                 <div class="card-body">
                     <h5 class="card-title">${product.name}</h5>
                     <p class="card-text">Prezzo: ${product.price}€</p>
