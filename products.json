@@ -1,26 +1,26 @@
 [
     {
         "id": 1,
-        "name": "Lattina da 3L",
+        "name": "Lattina da 3 Litri",
+        "description": "Olio Extravergine di Oliva estratto a freddo da cultivar Carolea. Gusto equilibrato ed armonico.",
         "price": 0,
         "shipping": 0,
         "img_path": "latt3l.png"
     },
-    
     {
         "id": 2,
-        "name": "Lattina da 5L",
+        "name": "Lattina da 5 Litri",
+        "description": "Olio Extravergine di Oliva 100% Italiano. Ideale per l'uso quotidiano in famiglia a crudo e in cottura.",
         "price": 0,
         "shipping": 0,
         "img_path": "5l.jpg"
     },
-    
     {
         "id": 3,
-        "name": "Lattina da 10L",
+        "name": "Lattina da 10 Litri",
+        "description": "Scorta convenienza di Olio EVO artigianale in contenitore idoneo a preservare freschezza e proprietà organolettiche.",
         "price": 0,
         "shipping": 0,
         "img_path": "10l.jpg"
     }
-
 ]

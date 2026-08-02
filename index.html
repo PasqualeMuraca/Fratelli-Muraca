@@ -1,220 +1,585 @@
 <!doctype html>
-<html lang="en">
+<html lang="it">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fratelli Muraca</title>
-    <og:description content="Store di Olio Extravergine di Oliva">
-    <og:image content="https://raw.githubusercontent.com/PasqualeMuraca/Fratelli-Muraca/main/miscellaneous/fb_thumbnail.png">
-    <og:type content="website">
+    <title>Fratelli Muraca - Olio Extravergine di Oliva Biologico</title>
 
+    <!-- Open Graph & Meta Tags -->
+    <meta property="og:title" content="Fratelli Muraca - Olio Extravergine di Oliva">
+    <meta property="og:description"
+        content="Olio Extravergine di Oliva biologico di Lamezia Terme. Scopri il nostro olio estratto a freddo e ordina comodamente su WhatsApp.">
+    <meta property="og:image"
+        content="https://raw.githubusercontent.com/PasqualeMuraca/Fratelli-Muraca/main/miscellaneous/fb_thumbnail.png">
+    <meta property="og:type" content="website">
+    <meta name="description"
+        content="Società Agricola Fratelli Muraca - Produzione e vendita Olio Extravergine di Oliva biologico da cultivar Carolea estratto a freddo a Lamezia Terme (CZ).">
+
+    <link rel="icon" href="./favicon.ico">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5.3.3 & Bootstrap Icons 1.11.3 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        :root {
+            --primary-olive: #3f4e2d;
+            --dark-olive: #242d1a;
+            --deep-olive: #171f11;
+            --accent-gold: #c5a059;
+            --warm-cream: #faf8f5;
+            --terracotta: #7c3619;
+            --terracotta-dark: #5c260e;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--warm-cream);
+            color: #2b2b2b;
+            overflow-x: hidden;
+        }
+
+        .font-heading {
+            font-family: var(--font-serif);
+        }
+
+        .text-dark-olive {
+            color: var(--dark-olive);
+        }
+
+        .text-olive {
+            color: var(--primary-olive);
+        }
+
+        .text-gold {
+            color: var(--accent-gold);
+        }
+
+        .bg-dark-olive {
+            background-color: var(--dark-olive) !important;
+        }
+
+        .bg-deep-olive {
+            background-color: var(--deep-olive) !important;
+        }
+
+        .bg-olive {
+            background-color: var(--primary-olive) !important;
+        }
+
+        .btn-olive {
+            background-color: var(--primary-olive);
+            color: #ffffff;
+            border: none;
+            transition: all 0.25 ease;
+        }
+
+        .btn-olive:hover,
+        .btn-olive:focus {
+            background-color: var(--dark-olive);
+            color: #ffffff;
+        }
+
+        .btn-gold {
+            background-color: var(--accent-gold);
+            color: #ffffff;
+            border: none;
+            transition: all 0.25s ease;
+        }
+
+        .btn-gold:hover {
+            background-color: #b08c45;
+            color: #ffffff;
+        }
+
+        /* Navbar */
+        .navbar-custom {
+            background-color: rgba(23, 31, 17, 0.96) !important;
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .navbar-custom .nav-link {
+            color: rgba(255, 255, 255, 0.85) !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: color 0.2s ease;
+        }
+
+        .navbar-custom .nav-link:hover,
+        .navbar-custom .nav-link.active {
+            color: var(--accent-gold) !important;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background-color: var(--deep-olive);
+            padding: 8rem 1rem 6rem 1rem;
+            color: white;
+        }
+
+        .hero-cover-img {
+            max-width: 580px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        /* Product Cards */
+        .product-card {
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.06) !important;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        .product-img-wrapper {
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f7f6f3;
+        }
+
+        .product-img {
+            max-height: 180px;
+            object-fit: contain;
+        }
+
+        /* Section Story Terracotta */
+        .story-section {
+            background-color: var(--terracotta);
+            color: #ffffff;
+        }
+
+        .story-box {
+            background: rgba(0, 0, 0, 0.12);
+            border-radius: 12px;
+        }
+
+        /* Toast Container */
+        #toast-container {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 1090;
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #607244;">
-        <div class="container-fluid">
-            <a class="navbar-brand text-white" href="#"><i>Fratelli Muraca</i></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon" style="color: white;"></span>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container"></div>
+
+    <!-- Navigation Bar (Text Brand only, no logo image) -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-custom shadow-sm">
+        <div class="container">
+            <a class="navbar-brand font-heading text-white fs-4 fw-bold fst-italic" href="#">
+                Fratelli Muraca
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Attiva navigazione">
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
                     <li class="nav-item">
-                        <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#store">Store</a>
+                        <a class="nav-link" href="#store">Store</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#chi_siamo">Chi Siamo</a>
+                        <a class="nav-link" href="#chi_siamo">Chi Siamo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#contattaci">Contattaci</a>
+                        <a class="nav-link" href="#dove_siamo">Dove Siamo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contattaci">Contattaci</a>
+                    </li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="btn btn-outline-light btn-sm rounded-pill px-3 py-1 position-relative d-inline-flex align-items-center gap-2"
+                            href="#cart-section">
+                            <i class="bi bi-cart3"></i> Carrello
+                            <span id="nav-cart-badge" class="badge bg-gold rounded-pill" style="display: none;">0</span>
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="container-fluid d-flex justify-content-center align-items-center"
-        style="background-color: #607244; height: 100vh;">
-        <div class="row">
-            <div class="col text-center">
-                <img src="./media/logo.png" class="img-fluid" alt="logo">
-            </div>
-        </div>
-    </div>
-    <br>
+    <!-- Hero Section (Clean cover image display without box frame) -->
+    <header class="hero-section text-center d-flex align-items-center justify-content-center min-vh-100">
+        <div class="container my-auto py-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10">
 
-    <h3 class="fst-italic fw-lighter m-5">Scopri la purezza e il gusto autentico del nostro Olio Extravergine di Oliva,
-        direttamente dal cuore della nostra terra alla tua tavola. Acquista ora e assapora la tradizione in ogni goccia.
-    </h3>
-    <br>
+                    <!-- Clean FB Cover Logo Image (Unboxed) -->
+                    <img src="./media/fb_cover.png" class="hero-cover-img img-fluid" alt="Fratelli Muraca">
 
-    <div class="container mt-5" id="store">
-        <div class="row" id="shop-div">
-            <!-- Cards for products -->
-        </div>
-        <h6 class="text-muted">Immagini a solo scopo illustrativo, le lattine potrebbero essere diverse esteticamente
-        </h6>
-    </div>
+                    <p class="lead text-white-50 font-heading fst-italic mb-5 fs-4 px-md-4">
+                        "Scopri la purezza e il gusto autentico del nostro Olio Extravergine di Oliva, direttamente dal
+                        cuore della nostra terra alla tua tavola."
+                    </p>
 
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="#store"
+                            class="btn btn-gold btn-lg px-4 py-3 rounded-pill fw-semibold shadow-sm d-inline-flex align-items-center gap-2">
+                            <i class="bi bi-shop"></i> Esplora lo Store
+                        </a>
+                        <a href="https://wa.me/393384578681" target="_blank" rel="noopener"
+                            class="btn btn-outline-light btn-lg px-4 py-3 rounded-pill fw-semibold d-inline-flex align-items-center gap-2">
+                            <i class="bi bi-whatsapp text-success fs-5"></i> Contattaci su WhatsApp
+                        </a>
+                    </div>
 
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col">
-                <h1>Cart</h1>
-                <button type="button" class="btn btn-danger" id="clear_cart" onclick="clearCart()">Svuota
-                    Carrello</button>
-                <ul id="cart_ul">
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="container mt-5" id="order" hidden>
-        <h4 id="total_price">Prezzo carrello: 0.00€</h4>
-        <h4 id="total_shipping">Costo spedizione: 0.00€</h4>
-        <h2 id="total_cost" class="text-bg-success">Totale: 0.00€</h2>
-        <br>
-
-        <form id="order_form" onchange="updateCart()">
-            <fieldset>
-                <legend>Inserisci i tuoi dati per l'ordine</legend>
-                
-                <label for="name">Nome:</label>
-                <input type="text" id="name" name="name" placeholder="Inserisci il tuo nome" required>
-                <br>
-        
-                <label for="surname">Cognome:</label>
-                <input type="text" id="surname" name="surname" placeholder="Inserisci il tuo cognome" required>
-                <br>
-        
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Inserisci la tua email" required>
-                <br>
-        
-                <label for="address">Indirizzo:</label>
-                <input type="text" id="address" name="address" placeholder="Via e numero civico" required>
-                <br>
-        
-                <label for="city">Città:</label>
-                <input type="text" id="city" name="city" placeholder="Inserisci la tua città" required>
-                <br>
-        
-                <label for="prov">Provincia:</label>
-                <input type="text" id="prov" name="prov" placeholder="Sigla provincia" required>
-                <br>
-        
-                <label for="cap">CAP:</label>
-                <input type="text" id="cap" name="cap" placeholder="Inserisci il CAP" required>
-                <br>
-        
-                <label for="phone">Telefono:</label>
-                <input type="text" id="phone" name="phone" placeholder="Inserisci il tuo numero di telefono" required>
-            </fieldset>
-        </form>
-        
-
-        <a name="order_whatsapp" id="order_whatsapp" class="btn btn-success" href="wa.me/393384578681?text="
-            role="button">Ordina Subito con Whatsapp <i class="bi bi-whatsapp"></i></a>
-    </div>
-    <br>
-
-
-    <div id="chi_siamo" class="container-fluid" style="background-color: rgb(141, 57, 1);">
-        <div class="row" style="color: white;">
-            <h1 class="fst-italic text-center mt-3">Chi Siamo</h1>
-
-            <h3 class="fst-italic">La Nostra Storia</h3>
-            <p class="fw-lighter fst-italic">Da oltre un secolo la famiglia Muraca si dedica alla coltivazione degli ulivi e alla produzione di Olio
-                Extra Vergine di Oliva. Dalla passione e tenacia, nel rispetto per l'ambiente ed impiegando innovazioni
-                tecnologiche finalizzate al perseguimento di una qualità sempre più alta, nell'anno 2008 nasce la
-                Società Fratelli Muraca con lo scopo di proseguire quanto lasciato in eredità dai propri avi.</p>
-            <video loop autoplay muted controls width="640" height="360">
-                <source src="./media/video.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-
-            <h3 class="fst-italic">Il Nostro Olio</h3>
-            <p class="fw-lighter fst-italic">L'estrazione dell'olio ha inizio portando subito le olive al frantoio, dopo la fase della raccolta che
-                avviene nel momento in cui il frutto raggiunge la maturazione ideale, mediante l'utilizzo di mezzi
-                meccanici senza stress per le piante secolari e garantendo l'integrità del frutto, assicurandone così le
-                caratteristiche organolettiche. Nello specifico la molitura che avviene entro poche ore dalla raccolta,
-                viene svolta attraverso impianti tecnologici del tipo a ciclo continuo, rigorosamente a freddo sotto i
-                25°, al fine di ottenere maggiore qualità.</p>
-            <p class="fw-lighter fst-italic">L'olio prodotto viene poi trasferito nei magazzini aziendali, stoccato in appositi contenitori di acciaio
-                inox, in assenza di luce, ossigeno e fonti di calore, al fine di conservarne i composti fenolici e le
-                qualità organolettiche.</p>
-            <p class="fw-lighter fst-italic">L'olio proveniente dalla Carolea è un olio equilibrato, armonico che ben si presta ad esaltare, senza
-                coprirli, tutti i sapori. Inoltre può essere utilizzato nei vari abbinamenti, tanto a crudo che nelle
-                preparazioni, ricordando inoltre che la composizione chimica dell'olio di oliva, grazie al suo alto
-                "punto di fumo", lo rende particolarmente indicato e sano per friggere.</p>
-            <p class="fw-lighter fst-italic">Molte sono le proprietà riconosciute all'olio extravergine di oliva, le quali attualmente sono in grado
-                di migliorare di molto lo stato di benessere di chi lo assume: (antinfiammatoria, antiallergica,
-                antibatterica, antivirale, favorisce la digestione gastrica perché agisce migliorando le contrazioni
-                della cistifellea e provocando la liberazione degli acidi biliari, attiva nella prevenzione delle
-                malattie degenerative, diabete, colesterolo nel sangue, cancro, malattie cardiovascolari e
-                l'invecchiamento precoce). Per tali motivi è consigliabile assumere quotidianamente circa 20 g di olio
-                d'oliva, in modo tale da sfruttare al meglio i molteplici benefici e salvaguardare le cellule, grazie
-                soprattutto al contenuto di vitamina E.</p>
-            <p class="fw-lighter fst-italic">La Società applicando le linee guida dell'agricoltura biologica, priva dell'utilizzo di prodotti di
-                sintesi, segue tutte le fasi produttive ovvero dalla coltivazione delle olive all'estrazione e
-                confezionamento dell'olio.</p>
-            <iframe
-                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FFratelliMuraca&tabs=timeline&width=500&height=200&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
-                width="500" height="200" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
-                allowfullscreen="true"
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-        </div>
-        <br>
-        <div class="row" style="color: white;">
-            <h1 class="fst-italic text-center">Dove Siamo</h1>
-            <p class="fw-semibold">Piazza 5 Dicembre n.1, Lamezia Terme (CZ)</p>
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d387.76840614417813!2d16.279631399577397!3d38.96630558921367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sit!2sit!4v1722777597853!5m2!1sit!2sit"
-                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        <br>
-    </div>
-
-    <footer id="contattaci" class="bg-light text-lg-start">
-        <div class="text-center p-3" style="background-color: #607244; color:white;">
-            <div class="row">
-                <div class="col-md-6">
-                    <p>2024 - Società Agricola Semplice Fratelli Muraca EST.2008</p>
-                    <p><i class="bi bi-telephone"></i> <a class="text-white" href="tel:+393384578681"> +39 338 457 8681</a> <a class="text-success-emphasis" href="https://wa.me/393384578681">(anche Whatsapp)</a></p>
-                    <p><i class="bi bi-geo-alt"></i> Piazza 5 Dicembre n.1, Lamezia Terme (CZ)</p>
-                    <p><i class="bi bi-envelope"></i> Mail: <a class="text-white" href="mailto:fratellimuraca@gmail.com">fratellimuraca@gmail.com</a></p>
-                    <p><i class="bi bi-envelope"></i> PEC: agricolamuraca@pec.it</p>
-                    <a href="https://www.facebook.com/FratelliMuraca" class="text-white"><i class="bi bi-facebook"></i></a>
-                    <a href="https://wa.me/393384578681" class="text-white"><i class="bi bi-whatsapp"></i></a>
                 </div>
-                <div class="col-md-auto">
-                    <p>Developed with <i class="bi bi-heart-fill"></i> by <a href="https://github.com/PasqualeMuraca/" class="text-white fw-bold">Pasquale Muraca</a></p>
-                    <p>Special Thanks to
-                        <ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Store Section -->
+    <section class="py-5" id="store">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <span class="text-olive fw-bold text-uppercase tracking-wider fs-7">Store Online</span>
+                <h2 class="font-heading display-5 fw-bold text-dark-olive mb-2">I Nostri Formati</h2>
+                <p class="text-muted mx-auto" style="max-width: 600px;">
+                    Scegli il formato che preferisci ed inseriscilo nel carrello per ordinare comodamente tramite
+                    WhatsApp.
+                </p>
+            </div>
+
+            <!-- Products Grid loaded dynamically by script.js -->
+            <div class="row g-4 justify-content-center" id="shop-div">
+                <div class="col-12 text-center py-5">
+                    <div class="spinner-border text-success" role="status">
+                        <span class="visually-hidden">Caricamento prodotti...</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <small class="text-muted fst-italic">
+                    Immagini a solo scopo illustrativo, le lattine potrebbero essere diverse esteticamente.
+                </small>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart & Checkout Section -->
+    <section class="py-5 bg-white border-top border-bottom" id="cart-section">
+        <div class="container py-3">
+            <div class="text-center mb-4">
+                <span class="text-olive fw-bold text-uppercase tracking-wider fs-7">Riepilogo</span>
+                <h2 class="font-heading display-6 fw-bold text-dark-olive">Il Tuo Carrello</h2>
+            </div>
+
+            <!-- Empty Cart Display -->
+            <div id="empty-cart-message" class="text-center py-5">
+                <div class="mb-3">
+                    <i class="bi bi-cart-x text-muted" style="font-size: 3.5rem;"></i>
+                </div>
+                <h4 class="font-heading text-dark-olive">Il carrello è vuoto</h4>
+                <p class="text-muted mb-4">Aggiungi uno dei nostri formati di Olio Extravergine per procedere.</p>
+                <a href="#store" class="btn btn-olive rounded-pill px-4 py-2">
+                    <i class="bi bi-arrow-up-circle me-1"></i> Vai allo Store
+                </a>
+            </div>
+
+            <!-- Active Cart & Order Form (Hidden when cart empty) -->
+            <div id="order" class="d-none">
+                <div class="row g-4 justify-content-center">
+
+                    <!-- Cart Items Column -->
+                    <div class="col-lg-7">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="font-heading fw-bold text-dark-olive mb-0">Prodotti Selezionati</h5>
+                            <button type="button" class="btn btn-outline-danger btn-sm rounded-pill" id="clear_cart"
+                                onclick="clearCart()">
+                                <i class="bi bi-trash3 me-1"></i> Svuota Carrello
+                            </button>
+                        </div>
+
+                        <div id="cart_ul"></div>
+                    </div>
+
+                    <!-- Order Form & WhatsApp Column (Fields optional) -->
+                    <div class="col-lg-5">
+                        <div class="card border shadow-sm rounded-4 p-4 sticky-lg-top" style="top: 100px;">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h5 class="font-heading fw-bold text-dark-olive mb-0">Dati per l'Ordine</h5>
+                                <small class="text-muted fs-7"></small>
+                            </div>
+
+                            <form id="order_form" onsubmit="return false;">
+                                <div class="row g-2">
+                                    <div class="col-md-6 form-floating mb-2">
+                                        <input type="text" class="form-control form-control-sm" id="name" name="name"
+                                            placeholder="Nome">
+                                        <label for="name">Nome</label>
+                                    </div>
+                                    <div class="col-md-6 form-floating mb-2">
+                                        <input type="text" class="form-control form-control-sm" id="surname"
+                                            name="surname" placeholder="Cognome">
+                                        <label for="surname">Cognome</label>
+                                    </div>
+                                </div>
+
+                                <div class="row g-2">
+                                    <div class="col-md-6 form-floating mb-2">
+                                        <input type="email" class="form-control form-control-sm" id="email" name="email"
+                                            placeholder="Email">
+                                        <label for="email">Email</label>
+                                    </div>
+                                    <div class="col-md-6 form-floating mb-2">
+                                        <input type="tel" class="form-control form-control-sm" id="phone" name="phone"
+                                            placeholder="Telefono">
+                                        <label for="phone">Telefono</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-floating mb-2">
+                                    <input type="text" class="form-control form-control-sm" id="address" name="address"
+                                        placeholder="Via e numero civico">
+                                    <label for="address">Indirizzo e N. Civico</label>
+                                </div>
+
+                                <div class="row g-2">
+                                    <div class="col-md-5 form-floating mb-2">
+                                        <input type="text" class="form-control form-control-sm" id="city" name="city"
+                                            placeholder="Città">
+                                        <label for="city">Città</label>
+                                    </div>
+                                    <div class="col-md-3 form-floating mb-2">
+                                        <input type="text" class="form-control form-control-sm" id="prov" name="prov"
+                                            placeholder="Prov" maxlength="2">
+                                        <label for="prov">Prov</label>
+                                    </div>
+                                    <div class="col-md-4 form-floating mb-2">
+                                        <input type="text" class="form-control form-control-sm" id="cap" name="cap"
+                                            placeholder="CAP" maxlength="5">
+                                        <label for="cap">CAP</label>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <hr class="my-3">
+
+                            <!-- Price Summary -->
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between text-muted mb-1">
+                                    <span>Prezzo carrello:</span>
+                                    <span id="total_price" class="fw-semibold">0,00 €</span>
+                                </div>
+                                <div class="d-flex justify-content-between text-muted mb-2">
+                                    <span>Costo spedizione:</span>
+                                    <span id="total_shipping" class="fw-semibold">0,00 €</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                                    <span class="fw-bold font-heading fs-5 text-dark-olive">Totale:</span>
+                                    <span id="total_cost" class="fs-4 fw-bold text-success">0,00 €</span>
+                                </div>
+                            </div>
+
+                            <a name="order_whatsapp" id="order_whatsapp" target="_blank" rel="noopener"
+                                class="btn btn-success btn-lg w-100 rounded-pill py-3 fw-bold shadow-sm d-flex align-items-center justify-content-center gap-2"
+                                href="https://wa.me/393384578681">
+                                <i class="bi bi-whatsapp fs-4"></i> Ordina Subito con WhatsApp
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chi Siamo Section -->
+    <section id="chi_siamo" class="story-section py-5">
+        <div class="container py-4">
+            <div class="row align-items-center mb-4">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="font-heading display-5 fw-bold text-white mb-3">Chi Siamo</h2>
+                    <h4 class="font-heading fst-italic text-white-50">La Nostra Storia</h4>
+                    <p class="fw-light leading-relaxed text-white-50">
+                        Da oltre un secolo la famiglia Muraca si dedica alla coltivazione degli ulivi e alla produzione
+                        di Olio Extra Vergine di Oliva. Dalla passione e tenacia, nel rispetto per l'ambiente ed
+                        impiegando innovazioni tecnologiche finalizzate al perseguimento di una qualità sempre più alta,
+                        nell'anno 2008 nasce la Società Fratelli Muraca con lo scopo di proseguire quanto lasciato in
+                        eredità dai propri avi.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row g-4 align-items-center mb-5">
+                <div class="col-lg-6">
+                    <div class="p-4 rounded-4 story-box h-100">
+                        <h4 class="font-heading text-white mb-3">Il Nostro Olio</h4>
+                        <p class="fw-light leading-relaxed text-white-50 mb-3">
+                            L'estrazione dell'olio ha inizio portando subito le olive al frantoio, dopo la fase della
+                            raccolta che avviene nel momento in cui il frutto raggiunge la maturazione ideale, mediante
+                            l'utilizzo di mezzi meccanici senza stress per le piante secolari e garantendo l'integrità
+                            del frutto, assicurandone così le caratteristiche organolettiche. Nello specifico la
+                            molitura che avviene entro poche ore dalla raccolta, viene svolta attraverso impianti
+                            tecnologici del tipo a ciclo continuo, rigorosamente a freddo sotto i 25°, al fine di
+                            ottenere maggiore qualità.
+                        </p>
+                        <p class="fw-light leading-relaxed text-white-50 mb-0">
+                            L'olio proveniente dalla Carolea è un olio equilibrato, armonico che ben si presta ad
+                            esaltare, senza coprirli, tutti i sapori. Inoltre la Società applicando le linee guida
+                            dell'agricoltura biologica, priva dell'utilizzo di prodotti di sintesi, segue tutte le fasi
+                            produttive dalla coltivazione all'estrazione e confezionamento.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow">
+                        <video loop autoplay muted controls poster="./media/fratelli_muraca_retro1.jpg">
+                            <source src="./media/video.mp4" type="video/mp4">
+                            Il tuo browser non supporta il riproduttore video.
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Facebook Social Plugin -->
+            <div class="row justify-content-center mt-4">
+                <div class="col-auto">
+                    <div class="bg-white p-2 rounded-4 shadow-sm">
+                        <iframe
+                            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FFratelliMuraca&tabs=timeline&width=500&height=200&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
+                            width="500" height="200" style="border:none;overflow:hidden;max-width:100%;" scrolling="no"
+                            frameborder="0" allowfullscreen="true"
+                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dove Siamo Section -->
+    <section id="dove_siamo" class="py-5 bg-light">
+        <div class="container py-3">
+            <div class="text-center mb-4">
+                <h2 class="font-heading display-6 fw-bold text-dark-olive mb-2">Dove Siamo</h2>
+                <p class="fw-semibold text-muted">
+                    Piazza 5 Dicembre n.1, Lamezia Terme (CZ)
+                </p>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="ratio ratio-21x9 rounded-4 overflow-hidden shadow-sm border">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d387.76840614417813!2d16.279631399577397!3d38.96630558921367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sit!2sit!4v1722777597853!5m2!1sit!2sit"
+                            style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Text Brand only, no logo image) -->
+    <footer id="contattaci" class="bg-deep-olive text-white pt-5 pb-4">
+        <div class="container">
+            <div class="row g-4 justify-content-between">
+                <div class="col-lg-5 col-md-6">
+                    <h4 class="font-heading fw-bold mb-3 text-gold fst-italic">Fratelli Muraca</h4>
+                    <p class="text-white-50 small mb-3">
+                        Società Agricola Semplice Fratelli Muraca EST. 2008<br>
+                        Produzione e vendita di Olio Extravergine di Oliva.
+                    </p>
+                    <div class="d-flex gap-3">
+                        <a href="https://www.facebook.com/FratelliMuraca" target="_blank" rel="noopener"
+                            class="btn btn-outline-light btn-sm rounded-circle" aria-label="Facebook">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="https://wa.me/393384578681" target="_blank" rel="noopener"
+                            class="btn btn-outline-success btn-sm rounded-circle" aria-label="WhatsApp">
+                            <i class="bi bi-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="font-heading text-gold mb-3">Contatti</h5>
+                    <ul class="list-unstyled text-white-50 small d-flex flex-column gap-2 mb-0">
+                        <li>
+                            <i class="bi bi-telephone text-gold me-2"></i>
+                            <a class="text-white text-decoration-none" href="tel:+393384578681">+39 338 457 8681</a>
+                            <a class="text-success ms-1" href="https://wa.me/393384578681">(anche WhatsApp)</a>
+                        </li>
+                        <li>
+                            <i class="bi bi-geo-alt text-gold me-2"></i>
+                            Piazza 5 Dicembre n.1, Lamezia Terme (CZ)
+                        </li>
+                        <li>
+                            <i class="bi bi-envelope text-gold me-2"></i>
+                            Mail: <a class="text-white text-decoration-none"
+                                href="mailto:fratellimuraca@gmail.com">fratellimuraca@gmail.com</a>
+                        </li>
+                        <li>
+                            <i class="bi bi-file-earmark-text text-gold me-2"></i>
+                            PEC: agricolamuraca@pec.it
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-12">
+                    <h5 class="font-heading text-gold mb-3">Riconoscimenti</h5>
+                    <p class="text-white-50 small mb-2">
+                        Developed with <i class="bi bi-heart-fill text-danger"></i> by <a
+                            href="https://github.com/PasqualeMuraca/" target="_blank" rel="noopener"
+                            class="text-white font-weight-bold text-decoration-underline">Pasquale Muraca</a>
+                    </p>
+                    <div class="text-white-50 small">
+                        <span class="d-block mb-1">Special Thanks to:</span>
+                        <ul class="list-unstyled ps-3 border-start border-secondary mb-0">
                             <li>Giuseppe Pastena</li>
                             <li>Salvatore Conte</li>
                             <li>Mariairene La Torre</li>
-                            <li><a class="text-white" href="https://github.com/SharafatKarim">Sharafat Karim</a></li>
+                            <li><a class="text-white-50 text-decoration-underline"
+                                    href="https://github.com/SharafatKarim" target="_blank" rel="noopener">Sharafat
+                                    Karim</a></li>
                         </ul>
-                    </p>
+                    </div>
                 </div>
+            </div>
+
+            <hr class="my-4 border-secondary">
+
+            <div class="text-center text-white-50 small">
+                © <span id="copyright-year">2026</span> Società Agricola Fratelli Muraca. Tutti i diritti riservati.
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Bootstrap 5.3.3 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
