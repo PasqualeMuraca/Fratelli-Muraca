@@ -33,12 +33,12 @@
     <style>
         :root {
             --primary-olive: #3f4e2d;
-            --dark-olive: #242d1a;
-            --deep-olive: #171f11;
+            --dark-olive: #232d1a;
+            --deep-olive: #161f11;
             --accent-gold: #c5a059;
+            --gold-hover: #b08c45;
             --warm-cream: #faf8f5;
             --terracotta: #7c3619;
-            --terracotta-dark: #5c260e;
             --font-serif: 'Playfair Display', Georgia, serif;
             --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
         }
@@ -52,6 +52,7 @@
 
         .font-heading {
             font-family: var(--font-serif);
+            font-style: normal;
         }
 
         .text-dark-olive {
@@ -78,11 +79,16 @@
             background-color: var(--primary-olive) !important;
         }
 
+        .bg-gold {
+            background-color: var(--accent-gold) !important;
+            color: #ffffff;
+        }
+
         .btn-olive {
             background-color: var(--primary-olive);
             color: #ffffff;
             border: none;
-            transition: all 0.25 ease;
+            transition: all 0.25s ease;
         }
 
         .btn-olive:hover,
@@ -99,19 +105,28 @@
         }
 
         .btn-gold:hover {
-            background-color: #b08c45;
+            background-color: var(--gold-hover);
             color: #ffffff;
         }
 
         /* Navbar */
         .navbar-custom {
-            background-color: rgba(23, 31, 17, 0.96) !important;
+            background-color: rgba(22, 31, 17, 0.96) !important;
             backdrop-filter: blur(8px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 0.8rem;
+            padding-bottom: 0.8rem;
+        }
+
+        .navbar-brand {
+            font-family: var(--font-serif);
+            font-style: normal !important;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
         .navbar-custom .nav-link {
-            color: rgba(255, 255, 255, 0.85) !important;
+            color: rgba(255, 255, 255, 0.88) !important;
             font-weight: 500;
             padding: 0.5rem 1rem;
             transition: color 0.2s ease;
@@ -122,19 +137,91 @@
             color: var(--accent-gold) !important;
         }
 
-        /* Hero Section */
-        .hero-section {
-            background-color: var(--deep-olive);
-            padding: 8rem 1rem 6rem 1rem;
-            color: white;
+        /* Fullscreen Cover Screen */
+        .cover-screen {
+            background-color: #607244;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 2rem 1rem;
         }
 
-        .hero-cover-img {
-            max-width: 580px;
-            width: 100%;
+        .cover-logo-fullscreen {
+            width: 800px;
+            max-width: 92vw;
             height: auto;
             display: block;
-            margin: 0 auto 2.5rem auto;
+            margin: 0 auto;
+            transform: scale(1.8);
+            transform-origin: center center;
+        }
+
+        .scroll-down-indicator {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--accent-gold);
+            text-decoration: none;
+            opacity: 0.85;
+            transition: opacity 0.3s ease;
+        }
+
+        .scroll-down-indicator:hover {
+            color: #ffffff;
+            opacity: 1;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-10px);
+            }
+
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .animate-bounce {
+            animation: bounce 2s infinite;
+        }
+
+        /* Expanded Hero Section */
+        .hero-section {
+            background-color: var(--dark-olive);
+            padding: 7rem 0 7rem 0;
+            color: white;
+            position: relative;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            line-height: 1.15;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.75;
+        }
+
+        .hero-img-showcase {
+            max-height: 520px;
+            object-fit: cover;
+            width: 100%;
         }
 
         /* Product Cards */
@@ -146,20 +233,38 @@
 
         .product-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08) !important;
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1) !important;
         }
 
         .product-img-wrapper {
-            height: 220px;
+            height: 300px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #f7f6f3;
+            background-color: #f8f7f4;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
 
         .product-img {
-            max-height: 180px;
+            max-height: 250px;
+            width: auto;
             object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .product-img-wrapper:hover .product-img {
+            transform: scale(1.08);
+        }
+
+        .zoom-hint-badge {
+            opacity: 0.8;
+            transition: opacity 0.2s ease;
+        }
+
+        .product-img-wrapper:hover .zoom-hint-badge {
+            opacity: 1;
         }
 
         /* Section Story Terracotta */
@@ -188,10 +293,27 @@
     <!-- Toast Notification Container -->
     <div id="toast-container"></div>
 
-    <!-- Navigation Bar (Text Brand only, no logo image) -->
+    <!-- Modal Zoom Immagine Prodotto -->
+    <div class="modal fade" id="imageZoomModal" tabindex="-1" aria-labelledby="imageZoomModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="modal-header border-0 bg-olive text-white px-4 py-3">
+                    <h5 class="modal-title font-heading mb-0" id="imageZoomModalLabel">Vista Dettaglio</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Chiudi"></button>
+                </div>
+                <div class="modal-body p-4 text-center bg-light">
+                    <img id="zoomedImage" src="" alt="Dettaglio Prodotto" class="img-fluid rounded shadow-sm"
+                        style="max-height: 75vh; object-fit: contain;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar (Text Brand in Gold) -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-custom shadow-sm">
         <div class="container">
-            <a class="navbar-brand font-heading text-white fs-4 fw-bold fst-italic" href="#">
+            <a class="navbar-brand text-gold fs-4" href="#">
                 Fratelli Muraca
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -227,31 +349,51 @@
         </div>
     </nav>
 
-    <!-- Hero Section (Clean cover image display without box frame) -->
-    <header class="hero-section text-center d-flex align-items-center justify-content-center min-vh-100">
-        <div class="container my-auto py-4">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 col-md-10">
+    <!-- First Screen: Fullscreen Cover Banner Logo -->
+    <section id="cover-screen" class="cover-screen">
+        <div class="container text-center">
+            <img src="./media/fb_cover.png" alt="Fratelli Muraca" class="img-fluid cover-logo-fullscreen mb-4">
+        </div>
+        <a href="#hero-intro" class="scroll-down-indicator" aria-label="Scorri in basso">
+            <i class="bi bi-chevron-down fs-1 animate-bounce"></i>
+        </a>
+    </section>
 
-                    <!-- Clean FB Cover Logo Image (Unboxed) -->
-                    <img src="./media/fb_cover.png" class="hero-cover-img img-fluid" alt="Fratelli Muraca">
-
-                    <p class="lead text-white-50 font-heading fst-italic mb-5 fs-4 px-md-4">
-                        "Scopri la purezza e il gusto autentico del nostro Olio Extravergine di Oliva, direttamente dal
-                        cuore della nostra terra alla tua tavola."
+    <!-- Second Screen: Larger & Expanded Editorial Hero Section -->
+    <header id="hero-intro" class="hero-section d-flex align-items-center min-vh-100">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <!-- Left Content Column -->
+                <div class="col-lg-6">
+                    <div class="text-gold fw-bold text-uppercase tracking-wider fs-6 mb-3">
+                        Società Agricola • Lamezia Terme
+                    </div>
+                    <h1 class="font-heading hero-title text-white mb-4">
+                        Olio Extravergine di Oliva Biologico
+                    </h1>
+                    <p class="hero-subtitle mb-5">
+                        Prodotto con passione da oltre un secolo dalle nostre olive cultivar Carolea. Estratto a freddo
+                        entro poche ore dalla raccolta per garantire massima purezza e proprietà organolettiche
+                        inimitabili.
                     </p>
-
-                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <div class="d-flex flex-wrap gap-3">
                         <a href="#store"
                             class="btn btn-gold btn-lg px-4 py-3 rounded-pill fw-semibold shadow-sm d-inline-flex align-items-center gap-2">
-                            <i class="bi bi-shop"></i> Esplora lo Store
+                            <i class="bi bi-shop fs-5"></i> Esplora lo Store
                         </a>
                         <a href="https://wa.me/393384578681" target="_blank" rel="noopener"
                             class="btn btn-outline-light btn-lg px-4 py-3 rounded-pill fw-semibold d-inline-flex align-items-center gap-2">
                             <i class="bi bi-whatsapp text-success fs-5"></i> Contattaci su WhatsApp
                         </a>
                     </div>
+                </div>
 
+                <!-- Right Editorial Showcase Image Column -->
+                <div class="col-lg-6 text-center">
+                    <div class="position-relative d-inline-block">
+                        <img src="./media/hero_olive_oil.png" class="img-fluid rounded-4 shadow-lg hero-img-showcase"
+                            alt="Fratelli Muraca Olio Extravergine">
+                    </div>
                 </div>
             </div>
         </div>
@@ -265,7 +407,7 @@
                 <h2 class="font-heading display-5 fw-bold text-dark-olive mb-2">I Nostri Formati</h2>
                 <p class="text-muted mx-auto" style="max-width: 600px;">
                     Scegli il formato che preferisci ed inseriscilo nel carrello per ordinare comodamente tramite
-                    WhatsApp.
+                    WhatsApp. Clicca sulle immagini per ingrandirle.
                 </p>
             </div>
 
@@ -446,7 +588,7 @@
                         </p>
                         <p class="fw-light leading-relaxed text-white-50 mb-0">
                             L'olio proveniente dalla Carolea è un olio equilibrato, armonico che ben si presta ad
-                            esaltare, senza coprirli, tutti i sapori. Inoltre la Società applicando le linee guida
+                            esaltare, senza coprili, tutti i sapori. Inoltre la Società applicando le linee guida
                             dell'agricoltura biologica, priva dell'utilizzo di prodotti di sintesi, segue tutte le fasi
                             produttive dalla coltivazione all'estrazione e confezionamento.
                         </p>
@@ -500,12 +642,12 @@
         </div>
     </section>
 
-    <!-- Footer (Text Brand only, no logo image) -->
+    <!-- Footer -->
     <footer id="contattaci" class="bg-deep-olive text-white pt-5 pb-4">
         <div class="container">
             <div class="row g-4 justify-content-between">
                 <div class="col-lg-5 col-md-6">
-                    <h4 class="font-heading fw-bold mb-3 text-gold fst-italic">Fratelli Muraca</h4>
+                    <h4 class="font-heading fw-bold mb-3 text-gold">Fratelli Muraca</h4>
                     <p class="text-white-50 small mb-3">
                         Società Agricola Semplice Fratelli Muraca EST. 2008<br>
                         Produzione e vendita di Olio Extravergine di Oliva.

@@ -77,6 +77,20 @@ function showToast(message, isError = false) {
     }, 3000);
 }
 
+// Open modal lightbox zoom for product images
+function openImageZoom(imgSrc, title) {
+    const zoomedImg = document.getElementById('zoomedImage');
+    const modalTitle = document.getElementById('imageZoomModalLabel');
+    if (zoomedImg) zoomedImg.src = imgSrc;
+    if (modalTitle) modalTitle.textContent = title;
+
+    const modalEl = document.getElementById('imageZoomModal');
+    if (modalEl && typeof bootstrap !== 'undefined') {
+        const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+        modal.show();
+    }
+}
+
 // Build pre-compiled WhatsApp message
 function formatOrder() {
     const form = document.getElementById('order_form');
@@ -133,7 +147,7 @@ function addToCart(productId) {
 
     const currentQty = cart.get(productId) || 0;
     cart.set(productId, currentQty + 1);
-    
+
     saveCartToStorage();
     updateCart();
     showToast(`<strong>${product.name}</strong> aggiunto al carrello!`);
@@ -158,7 +172,7 @@ function updateQuantity(productId, delta) {
 function deleteFromCart(productId) {
     const product = products.find(p => p.id === productId);
     cart.delete(productId);
-    
+
     saveCartToStorage();
     updateCart();
     if (product) {
@@ -209,15 +223,15 @@ function updateCart() {
 
             const li = document.createElement('div');
             li.className = 'card mb-3 border-0 shadow-sm rounded-3 overflow-hidden cart-item-card';
-            
+
             const prodTotal = product.price * quantity;
             const shipTotal = product.shipping * quantity;
 
             li.innerHTML = `
                 <div class="card-body p-3">
                     <div class="row align-items-center g-3">
-                        <div class="col-3 col-sm-2 text-center">
-                            <img src="./products/${product.img_path}" alt="${product.name}" class="img-fluid rounded" style="max-height: 70px; object-fit: contain;">
+                        <div class="col-3 col-sm-2 text-center" style="cursor: pointer;" onclick="openImageZoom('./products/${product.img_path}', '${product.name}')">
+                            <img src="./products/${product.img_path}" alt="${product.name}" class="img-fluid rounded" style="max-height: 80px; object-fit: contain;">
                         </div>
                         <div class="col-9 col-sm-4">
                             <h6 class="fw-bold mb-1 font-heading text-dark-olive">${product.name}</h6>
@@ -309,8 +323,11 @@ document.addEventListener('DOMContentLoaded', async function () {
 
                 col.innerHTML = `
                     <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden product-card">
-                        <div class="bg-light text-center p-4 product-img-wrapper">
-                            <img src="./products/${product.img_path}" class="card-img-top img-fluid product-img" alt="${product.name}">
+                        <div class="product-img-wrapper" onclick="openImageZoom('./products/${product.img_path}', '${product.name}')" title="Clicca per ingrandire">
+                            <img src="./products/${product.img_path}" class="card-img-top product-img" alt="${product.name}">
+                            <span class="badge bg-dark bg-opacity-50 position-absolute bottom-0 end-0 m-3 px-2 py-1 rounded-pill small zoom-hint-badge">
+                                <i class="bi bi-zoom-in me-1"></i> Ingrandisci
+                            </span>
                         </div>
                         <div class="card-body d-flex flex-column p-4">
                             <h5 class="card-title font-heading fw-bold text-dark-olive mb-2">${product.name}</h5>
